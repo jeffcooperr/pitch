@@ -2,6 +2,14 @@ from scenedetect import detect, AdaptiveDetector, split_video_ffmpeg, open_video
 import cv2
 import os
 
+# this script splits the videos into frames at the midpoint of each scene
+# all clips are saved to "not_pitch" folder
+# pitch clips are manually added to "pitch" folder
+
+# next step: train model to classify pitch and not pitch
+
+
+
 def split_video(video_path, scene_timestamps, num):
 
     # Open video
@@ -17,7 +25,7 @@ def split_video(video_path, scene_timestamps, num):
         
         if ret:
             # Save frame as image with date-based name
-            output_path = os.path.join("./cnn_images/not_pitch", f"scene_snapshot_{num}_{i+1}.jpg")
+            output_path = os.path.join("./training_data/not_pitch", f"scene_snapshot_{num}_{i+1}.jpg")
             cv2.imwrite(output_path, frame)
             print(f"Saved frame from timestamp {scene['midpoint']:.2f}ms to {output_path}")
 
@@ -25,8 +33,8 @@ def split_video(video_path, scene_timestamps, num):
     cap.release()
 
 
-# test for first 5 videos.
-for num in range(1, 6):
+# test for first 10 videos.
+for num in range(1, 11):
     video_path = f"../games/raw/fastball/fastball_{num}.mp4"
 
     scene_list = detect(video_path, AdaptiveDetector())
