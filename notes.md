@@ -2,7 +2,7 @@
 `extract_training_images.py` current version iterates through the 3 pitch type video folders and extracts a midpoint of each scene in each video.
 these scenes are all added to the "not pitch" folder. the pitching scenes (which are easy to identify based on the thumbnail),
 are manually dragged to the "pitch" folder. 
-from here, we need to develop a model (research methods) to decipher between the two. the goal of this is to automatically extract 
+from here, we need to develop a model (research methods) to decipher between the two (ie, pitching scenes and all other scenes). the goal of this is to automatically extract 
 the pitching scene from a given clip.
 
 a revision (necessary?) for `extract_training_images.py` is likely to apply a crop/resizing for feeding the model. this apply should(?) be applied
